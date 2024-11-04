@@ -48,6 +48,7 @@ def index_to_position(index: Index, strides: Strides) -> int:
         pos += i * s
     return pos
 
+
 def to_index(ordinal: int, shape: Shape, out_index: OutIndex) -> None:
     """
     Convert an `ordinal` to an index in the `shape`.
@@ -66,6 +67,7 @@ def to_index(ordinal: int, shape: Shape, out_index: OutIndex) -> None:
         cur_dim = shape[i]
         out_index[i] = int(idx % cur_dim)
         idx = idx // cur_dim
+
 
 def broadcast_index(
     big_index: Index, big_shape: Shape, shape: Shape, out_index: OutIndex
@@ -88,7 +90,6 @@ def broadcast_index(
     """
     for i in range(len(shape)):
         out_index[i] = big_index[i + len(big_shape) - len(shape)] if shape[i] > 1 else 0
-    
 
 
 def shape_broadcast(shape1: UserShape, shape2: UserShape) -> UserShape:
@@ -107,16 +108,15 @@ def shape_broadcast(shape1: UserShape, shape2: UserShape) -> UserShape:
     """
     if len(shape1) < len(shape2):
         shape1, shape2 = shape2, shape1
-    
+
     out_shape = list(shape1[:len(shape1) - len(shape2)])
     for i in range(len(shape1) - len(shape2), len(shape1)):
         j = i - len(shape1) + len(shape2)
         if shape1[i] == shape2[j] or shape1[i] == 1 or shape2[j] == 1:
             out_shape.append(max(shape1[i], shape2[j]))
         else:
-            raise IndexingError(f"Brodcasting Error")
+            raise IndexingError("Brodcasting Error")
     return tuple(out_shape)
-
 
 
 def strides_from_shape(shape: UserShape) -> UserStrides:

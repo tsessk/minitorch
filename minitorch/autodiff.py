@@ -78,8 +78,6 @@ def topological_sort(variable: Variable) -> Iterable[Variable]:
 
     return sorted_vars[::-1]
 
-    
-
 
 def backpropagate(variable: Variable, deriv: Any) -> None:
     """
@@ -103,10 +101,6 @@ def backpropagate(variable: Variable, deriv: Any) -> None:
             for x, d in var.chain_rule(d_output):
                 if not x.is_constant():
                     derivs[x.unique_id] = derivs.get(x.unique_id, 0) + d
-
-
-
-
 
 
 @dataclass

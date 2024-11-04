@@ -360,7 +360,7 @@ def tensor_reduce(
             for j in range(a_shape[reduce_dim]):
                 out_index[reduce_dim] = j
                 out[out_idx] = fn(out[out_idx], a_storage[index_to_position(out_index, a_strides)])
-            
+
     return _reduce
 
 

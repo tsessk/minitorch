@@ -49,6 +49,7 @@ def is_close(x: float, y: float) -> float:
     "$f(x) = |x - y| < 1e-2$"
     return float(abs(x - y) < 1e-2)
 
+
 def sigmoid(x: float) -> float:
     r"""
     $f(x) =  \frac{1.0}{(1.0 + e^{-x})}$
@@ -71,6 +72,7 @@ def relu(x: float) -> float:
     (See https://en.wikipedia.org/wiki/Rectifier_(neural_networks) .)
     """
     return max(x, 0.0)
+
 
 EPS = 1e-6
 
@@ -150,7 +152,6 @@ def zipWith(
 
     """
     def zip_fn(l1: Iterable[float], l2: Iterable[float]) -> Iterable[Tuple[float, float]]:
-        #assert len(l1) == len(l2)
         return (fn(x, y) for x, y in zip(l1, l2))
     return zip_fn
 

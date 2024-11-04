@@ -130,6 +130,7 @@ def test_symmetric(a: float, b: float) -> None:
     """
     assert mul(a, b) == mul(b, a)
 
+
 @pytest.mark.task0_2
 @given(small_floats, small_floats, small_floats)
 def test_distribute(z: float, x: float, y: float) -> None:
@@ -148,11 +149,9 @@ def test_other(x) -> None:
     check unitarity of multiplication
     """
     assert x * 1.0 == x
-    
 
 
 # ## Task 0.3  - Higher-order functions
-
 # These tests check that your higher-order functions obey basic
 # properties.
 
@@ -177,6 +176,7 @@ def test_sum_distribute(ls1: List[float], ls2: List[float]) -> None:
     is the same as the sum of each element of `ls1` plus each element of `ls2`.
     """
     assert_close(sum(ls1) + sum(ls2), sum((x + y) for x, y in zip(ls1, ls2)))
+
 
 @pytest.mark.task0_3
 @given(lists(small_floats))

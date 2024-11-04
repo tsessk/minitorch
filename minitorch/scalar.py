@@ -104,11 +104,11 @@ class Scalar:
         return LT.apply(b, self)
 
     def __eq__(self, b: ScalarLike) -> Scalar:  # type: ignore[override]
-       return EQ.apply(self, b)
+        return EQ.apply(self, b)
 
     def __sub__(self, b: ScalarLike) -> Scalar:
         return Add.apply(self, Neg.apply(b))
-    
+
     def __neg__(self) -> Scalar:
         return Neg.apply(self)
 
