@@ -68,7 +68,7 @@ def topological_sort(variable: Variable) -> Iterable[Variable]:
     def dfs(node):
         if node.unique_id in visited or node.is_constant():
             return
-        
+
         visited.add(node.unique_id)
         if not node.is_leaf():
             for next_node in node.parents:

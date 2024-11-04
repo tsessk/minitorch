@@ -53,7 +53,7 @@ class Module:
         for child_n, child_m in self._modules.items():
             parameters_list.extend(child_m.named_parameters(prefix=prefix + child_n + "."))
         return parameters_list
-    
+
     def parameters(self) -> Sequence[Parameter]:
         "Enumerate over all the parameters of this module and its descendents."
         return [parameter for _, parameter in self.named_parameters()]
